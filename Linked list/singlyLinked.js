@@ -146,6 +146,7 @@ console.log(linkedlist.printList());
 console.log(linkedlist.insertAt(1, 70));
 console.log(linkedlist.removeLast());
 console.log(linkedlist.printList());
+console.log(linkedlist.removeAt(1));
 console.log(linkedlist.removeLast());
 console.log(linkedlist.printList());
 console.log(linkedlist.removeLast());
