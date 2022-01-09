@@ -85,6 +85,55 @@ class Linkedlist {
 			return data;
 		}
 	}
+
+	insertAt(pos, data) {
+		if (pos < 0 || pos > this.size) {
+			return;
+		}
+		if (pos === 0) {
+			this.prepend(data);
+		} else if (pos === this.size) {
+			this.append(data);
+		} else {
+			const n = new Circularnode(data);
+
+			let prev = null;
+			let current = this.head;
+			let count = 0;
+
+			while (count < pos) {
+				prev = current;
+				current = current.next;
+				count++;
+			}
+			n.next = current;
+			prev.next = n;
+			this.size++;
+		}
+	}
+
+	removeAt(pos) {
+		if (pos < 0 || pos >= this.size) {
+			return null;
+		}
+		if (pos === 0) {
+			this.removeFirst();
+		} else if (pos === this.size - 1) {
+			this.removeLast();
+		} else {
+			let prev = null;
+			let current = this.head;
+			let count = 0;
+			while (count < pos) {
+				prev = current;
+				current = current.next;
+				count++;
+			}
+			prev.next = current.next;
+			this.size--;
+			return current.data;
+		}
+	}
 }
 
 let linkedlist = new Linkedlist();
@@ -94,6 +143,7 @@ linkedlist.prepend(5);
 console.log(linkedlist.printList());
 // console.log(linkedlist.removeFirst());
 console.log(linkedlist.printList());
+console.log(linkedlist.insertAt(1, 70));
 console.log(linkedlist.removeLast());
 console.log(linkedlist.printList());
 console.log(linkedlist.removeLast());
