@@ -1,4 +1,4 @@
-class Circularnode {
+class Singlylinked {
 	constructor(data) {
 		this.data = data;
 		this.next = null;
@@ -13,7 +13,7 @@ class Linkedlist {
 	}
 
 	prepend(data) {
-		const n = new Circularnode(data);
+		const n = new Singlylinked(data);
 
 		if (this.size === 0) {
 			this.head = n;
@@ -26,7 +26,7 @@ class Linkedlist {
 	}
 
 	append(data) {
-		const n = new Circularnode(data);
+		const n = new Singlylinked(data);
 
 		if (this.size === 0) {
 			this.head = n;
@@ -95,7 +95,7 @@ class Linkedlist {
 		} else if (pos === this.size) {
 			this.append(data);
 		} else {
-			const n = new Circularnode(data);
+			const n = new Singlylinked(data);
 
 			let prev = null;
 			let current = this.head;
