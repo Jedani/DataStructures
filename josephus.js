@@ -83,11 +83,9 @@ function josephus(items, k) {
 	let result = [];
 	items.forEach((element) => {
 		linkedlist.append(element);
+		let a = linkedlist.removeAt(k - 1);
+		console.log(a);
 	});
-
-	for (let index = 0; index < items.length; index++) {
-		console.log(linkedlist.removeAt(k - 1));
-	}
 }
 
 // josephus([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1);
