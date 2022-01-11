@@ -86,6 +86,7 @@ class circularLinkedList {
 					this.head = undefined;
 				} else {
 					const removed = this.head;
+					console.log(removed);
 					current = this.getElementAt(this.length - 1);
 					this.head = this.head.next;
 					current.next = this.head;
@@ -197,3 +198,10 @@ class circularLinkedList {
 		return this.length;
 	};
 }
+
+let linkedlist = new circularLinkedList();
+linkedlist.append(2);
+// linkedlist.append(5);
+// linkedlist.append(10);
+console.log(linkedlist.getElementAt(0));
+console.log(linkedlist.removeAt(0));
