@@ -1,9 +1,10 @@
-class Queue {
+class Circularqueue {
 	constructor() {
 		this.storage = [];
 		this.head = 0;
 		this.tail = 0;
 		this.size = 0;
+		this.capacity = this.capacity;
 	}
 
 	enqueue(data) {
