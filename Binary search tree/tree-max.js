@@ -11,7 +11,7 @@ const b = new Node(11);
 const c = new Node(4);
 const d = new Node(2);
 const e = new Node(4);
-const f = new Node(1);
+const f = new Node(15);
 
 a.left = b;
 a.right = c;
@@ -22,8 +22,11 @@ c.right = f;
 // recursively
 
 const treeMax = (root) => {
-	if (root == null) return 0;
-	return treeMax(root.left) + treeMax(root.right);
+	if (root == null) return -Infinity;
+	if (root.left == null && root.right == null) return root.data;
+	const pathMax = Math.max(treeMax(root.left), treeMax(root.right));
+
+	return root.data + pathMax;
 };
 
 console.log(treeMax(a));
