@@ -134,14 +134,26 @@ class Linkedlist {
 			return current.data;
 		}
 	}
+
+	reverse() {
+		if (this.head == null || this.head.next == null) {
+			return this.head;
+		}
+		let current = this.head;
+		n = this.reverse(current.next);
+		this.head.next.next = current;
+		this.head.next = null;
+		return n;
+	}
 }
 
 let linkedlist = new Linkedlist();
 linkedlist.append(10);
 linkedlist.append(2);
 linkedlist.prepend(5);
+console.log(linkedlist.reverse());
 console.log(linkedlist.printList());
-// console.log(linkedlist.removeFirst());
+console.log(linkedlist.removeFirst());
 console.log(linkedlist.printList());
 console.log(linkedlist.insertAt(1, 70));
 console.log(linkedlist.removeLast());
