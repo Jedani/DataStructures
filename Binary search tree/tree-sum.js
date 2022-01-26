@@ -24,8 +24,12 @@ c.right = f;
 const treeSum = (root, total = 0) => {
 	if (root == null) return total;
 
-	total += root.data;
-	return treeSum(root.left, total) + treeSum(root.right);
+	// total += root.data;
+	// return treeSum(root.left, total) + treeSum(root.right);
+
+	// OR
+
+	return root.data + treeSum(root.left) + treeSum(root.right);
 };
 
 console.log(treeSum(a));
