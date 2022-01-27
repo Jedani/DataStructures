@@ -46,7 +46,7 @@ class Linkedlist {
 		let data = "";
 		let current = this.head;
 		while (current != null) {
-			data += current.data + " ";
+			data += current.data + " -> ";
 			current = current.next;
 		}
 		return data;
@@ -56,6 +56,7 @@ class Linkedlist {
 		if (this.size === 0) {
 			return null;
 		}
+
 		let data = this.head.data;
 		if (this.size === 1) {
 			this.head = null;
@@ -64,6 +65,7 @@ class Linkedlist {
 			this.head = this.head.next;
 		}
 		this.size--;
+
 		return data;
 	}
 
@@ -91,7 +93,7 @@ class Linkedlist {
 
 	insertAt(pos, data) {
 		if (pos < 0 || pos > this.size) {
-			return;
+			return "not enough items in list";
 		}
 		if (pos === 0) {
 			this.prepend(data);
@@ -151,20 +153,20 @@ class Linkedlist {
 }
 
 let linkedlist = new Linkedlist();
-// linkedlist.prepend(10);
-// linkedlist.prepend(5);
-// linkedlist.prepend(1);
+linkedlist.prepend(10);
+linkedlist.prepend(5);
+linkedlist.prepend(1);
 linkedlist.append(1);
 linkedlist.append(5);
 linkedlist.append(10);
 linkedlist.append(15);
+console.log(linkedlist.printList());
+console.log(linkedlist.removeFirst());
+console.log(linkedlist.removeLast());
+console.log(linkedlist.insertAt(1, 70));
 
 // console.log(linkedlist.reverse());
 // console.log(linkedlist.printList());
-// console.log(linkedlist.removeFirst());
-// console.log(linkedlist.printList());
-// console.log(linkedlist.insertAt(1, 70));
-// console.log(linkedlist.removeLast());
 // console.log(linkedlist.printList());
 // console.log(linkedlist.removeAt(1));
 // console.log(linkedlist.removeLast());
