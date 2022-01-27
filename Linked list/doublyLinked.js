@@ -139,7 +139,6 @@ class Linkedlist {
 			let after = curr.next;
 			previous.next = after;
 			after.prev = previous;
-			console.log(previous);
 		}
 		this.size--;
 	}
@@ -148,6 +147,19 @@ class Linkedlist {
 		if (this.head == null || this.head.next == null) {
 			return this.head;
 		}
+		let curr = this.head;
+		let temp;
+		while (curr !== null) {
+			temp = curr.prev;
+			curr.prev = curr.next;
+			curr.next = temp;
+			curr = curr.prev;
+		}
+		if (temp !== null) {
+			temp = temp.prev;
+			this.head = temp;
+		}
+		console.log(this.head);
 	}
 }
 
@@ -164,14 +176,13 @@ console.log(linkedlist.removeFirst());
 console.log(linkedlist.removeLast());
 linkedlist.insertAt(0, 1);
 linkedlist.insertAt(0, 100);
-console.log(linkedlist.printList());
 linkedlist.removeAt(2);
 console.log(linkedlist.printList());
-console.log(linkedlist.reverse());
 
-// console.log(linkedlist.printList());
-// console.log(linkedlist.printList());
-// console.log(linkedlist.removeLast());
-// console.log(linkedlist.printList());
-// console.log(linkedlist.removeLast());
-// console.log(linkedlist.printList());
+console.log(linkedlist.printList());
+
+console.log(linkedlist.printList());
+console.log(linkedlist.removeLast());
+console.log(linkedlist.printList());
+linkedlist.reverse();
+console.log(linkedlist.printList());
