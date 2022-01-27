@@ -28,15 +28,16 @@ class Linkedlist {
 	}
 
 	append(data) {
-		const n = new Singlylinked(data);
+		const n = new Doublylinked(data);
 
 		if (this.size === 0) {
 			this.head = n;
 			this.tail = n;
 		} else {
-			const temp = this.tail;
+			let temp = this.tail;
+			this.tail.next = n;
 			this.tail = n;
-			temp.next = this.tail;
+			this.tail.prev = temp;
 		}
 		this.size++;
 	}
@@ -150,11 +151,14 @@ class Linkedlist {
 }
 
 let linkedlist = new Linkedlist();
-linkedlist.prepend(10);
-linkedlist.prepend(5);
-linkedlist.prepend(1);
-// linkedlist.append(10);
-// linkedlist.append(2);
+// linkedlist.prepend(10);
+// linkedlist.prepend(5);
+// linkedlist.prepend(1);
+linkedlist.append(1);
+linkedlist.append(5);
+linkedlist.append(10);
+linkedlist.append(15);
+
 // console.log(linkedlist.reverse());
 // console.log(linkedlist.printList());
 // console.log(linkedlist.removeFirst());
