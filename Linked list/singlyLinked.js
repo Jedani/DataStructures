@@ -81,6 +81,7 @@ class Linkedlist {
 			}
 			curr.next = null;
 			this.tail = curr;
+
 			this.size--;
 			return data;
 		}
@@ -131,35 +132,40 @@ class Linkedlist {
 			}
 			prev.next = current.next;
 			this.size--;
+
 			return current.data;
 		}
 	}
 
 	reverse() {
-		if (this.head == null || this.head.next == null) {
-			return this.head;
+		if (this.head == null) {
+			return;
 		}
+		let prev = this.tail.next;
 		let current = this.head;
-		n = this.reverse(current.next);
-		this.head.next.next = current;
-		this.head.next = null;
-		return n;
+		while (current !== null) {
+			const next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		this.head = prev;
+		return this.printList();
 	}
 }
 
 let linkedlist = new Linkedlist();
 linkedlist.append(10);
-linkedlist.append(2);
+linkedlist.append(20);
+linkedlist.append(30);
 linkedlist.prepend(5);
+console.log(linkedlist.printList());
 console.log(linkedlist.reverse());
-console.log(linkedlist.printList());
+linkedlist.removeAt(3);
 console.log(linkedlist.removeFirst());
-console.log(linkedlist.printList());
-console.log(linkedlist.insertAt(1, 70));
 console.log(linkedlist.removeLast());
 console.log(linkedlist.printList());
-console.log(linkedlist.removeAt(1));
-console.log(linkedlist.removeLast());
+linkedlist.insertAt(0, 70);
 console.log(linkedlist.printList());
-console.log(linkedlist.removeLast());
+linkedlist.removeAt(1);
 console.log(linkedlist.printList());
