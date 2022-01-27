@@ -100,21 +100,22 @@ class Linkedlist {
 		} else if (pos === this.size) {
 			this.append(data);
 		} else {
-			const n = new Singlylinked(data);
+			const n = new Doublylinked(data);
 
-			let prev = null;
+			let count = 1;
 			let current = this.head;
-			let count = 0;
 
 			while (count < pos) {
-				prev = current;
 				current = current.next;
 				count++;
 			}
-			n.next = current;
-			prev.next = n;
-			this.size++;
+			let temp = current.next;
+			n.next = current.next;
+			temp.prev = n;
+			current.next = n;
+			n.prev = current;
 		}
+		this.size++;
 	}
 
 	removeAt(pos) {
@@ -156,14 +157,15 @@ let linkedlist = new Linkedlist();
 linkedlist.prepend(10);
 linkedlist.prepend(5);
 linkedlist.prepend(1);
-linkedlist.append(1);
-linkedlist.append(5);
-linkedlist.append(10);
 linkedlist.append(15);
+linkedlist.append(20);
+linkedlist.append(25);
+linkedlist.append(30);
 console.log(linkedlist.printList());
 console.log(linkedlist.removeFirst());
 console.log(linkedlist.removeLast());
-console.log(linkedlist.insertAt(1, 70));
+linkedlist.insertAt(1, 7);
+console.log(linkedlist.printList());
 
 // console.log(linkedlist.reverse());
 // console.log(linkedlist.printList());
