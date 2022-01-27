@@ -159,7 +159,7 @@ class Linkedlist {
 			temp = temp.prev;
 			this.head = temp;
 		}
-		console.log(this.head);
+		return this.printList();
 	}
 }
 
