@@ -63,8 +63,8 @@ class Linkedlist {
 			this.tail = null;
 		} else {
 			this.head = this.head.next;
+			this.size--;
 		}
-		this.size--;
 
 		return data;
 	}
@@ -114,12 +114,12 @@ class Linkedlist {
 			temp.prev = n;
 			current.next = n;
 			n.prev = current;
+			this.size++;
 		}
-		this.size++;
 	}
 
 	removeAt(pos) {
-		if (pos < 0 || pos >= this.size) {
+		if (pos < 0 || pos > this.size) {
 			return null;
 		}
 		if (pos === 0) {
@@ -127,29 +127,27 @@ class Linkedlist {
 		} else if (pos === this.size - 1) {
 			this.removeLast();
 		} else {
-			let prev = null;
-			let current = this.head;
 			let count = 0;
+			let curr = this.head;
+
 			while (count < pos) {
-				prev = current;
-				current = current.next;
+				curr = curr.next;
 				count++;
 			}
-			prev.next = current.next;
-			this.size--;
-			return current.data;
+
+			let previous = curr.prev;
+			let after = curr.next;
+			previous.next = after;
+			after.prev = previous;
+			console.log(previous);
 		}
+		this.size--;
 	}
 
 	reverse() {
 		if (this.head == null || this.head.next == null) {
 			return this.head;
 		}
-		let current = this.head;
-		n = this.reverse(current.next);
-		this.head.next.next = current;
-		this.head.next = null;
-		return n;
 	}
 }
 
@@ -164,13 +162,15 @@ linkedlist.append(30);
 console.log(linkedlist.printList());
 console.log(linkedlist.removeFirst());
 console.log(linkedlist.removeLast());
-linkedlist.insertAt(1, 7);
+linkedlist.insertAt(0, 1);
+linkedlist.insertAt(0, 100);
 console.log(linkedlist.printList());
+linkedlist.removeAt(2);
+console.log(linkedlist.printList());
+console.log(linkedlist.reverse());
 
-// console.log(linkedlist.reverse());
 // console.log(linkedlist.printList());
 // console.log(linkedlist.printList());
-// console.log(linkedlist.removeAt(1));
 // console.log(linkedlist.removeLast());
 // console.log(linkedlist.printList());
 // console.log(linkedlist.removeLast());
